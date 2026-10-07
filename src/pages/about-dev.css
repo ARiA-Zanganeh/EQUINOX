@@ -1,0 +1,968 @@
+/* =========================================================
+   EQUINOX — ABOUT DEV
+   01 Project · 02 Developer · 03 Content · Final
+   One continuous atmosphere. Type, spacing, borders and
+   motion match Rockets.
+   ========================================================= */
+
+.about-page,
+.about-page *,
+.about-page *::before,
+.about-page *::after {
+  box-sizing: border-box;
+}
+
+.about-page {
+  --fx: 50%;
+  --fy: 30%;
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  margin: 0;
+  padding: 168px 56px 0;
+  overflow: hidden;
+  color: #f2f2f2;
+  /* Haze sits at several heights so the environment never ends */
+  background:
+    radial-gradient(900px 520px at 14% 640px, rgba(78, 46, 108, 0.17), transparent 70%),
+    radial-gradient(800px 540px at 88% 520px, rgba(42, 34, 86, 0.15), transparent 68%),
+    radial-gradient(900px 600px at 70% 1500px, rgba(62, 28, 70, 0.09), transparent 72%),
+    radial-gradient(760px 520px at 12% 2100px, rgba(34, 26, 70, 0.1), transparent 70%),
+    radial-gradient(700px 480px at 50% 100%, rgba(52, 32, 84, 0.08), transparent 72%),
+    #000;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Reveal (same language as Rockets) ---------- */
+
+.about-page .rv {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--d, 0s);
+}
+
+.about-page .is-visible .rv {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Atmosphere ---------- */
+
+.about-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.about-field {
+  position: absolute;
+  left: var(--fx);
+  top: var(--fy);
+  width: 720px;
+  height: 720px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(168, 146, 204, 0.05) 0%,
+    rgba(92, 64, 128, 0.028) 36%,
+    transparent 68%
+  );
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-page.is-lit .about-field {
+  opacity: 1;
+}
+
+/* Stars: tiny, sparse, spread over the full page height */
+.about-stars {
+  position: absolute;
+  inset: -2% -4%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.about-stars-far {
+  opacity: 0.5;
+  background-image:
+    radial-gradient(1px 1px at 8% 2%, rgba(242, 242, 242, 0.55), transparent 60%),
+    radial-gradient(1px 1px at 18% 6%, rgba(242, 242, 242, 0.26), transparent 60%),
+    radial-gradient(1.2px 1.2px at 27% 11%, rgba(226, 216, 246, 0.4), transparent 60%),
+    radial-gradient(1px 1px at 36% 17%, rgba(242, 242, 242, 0.2), transparent 60%),
+    radial-gradient(1px 1px at 44% 4%, rgba(242, 242, 242, 0.34), transparent 60%),
+    radial-gradient(1px 1px at 61% 9%, rgba(242, 242, 242, 0.4), transparent 60%),
+    radial-gradient(1px 1px at 77% 14%, rgba(242, 242, 242, 0.22), transparent 60%),
+    radial-gradient(1px 1px at 92% 7%, rgba(242, 242, 242, 0.2), transparent 60%),
+    radial-gradient(1px 1px at 14% 26%, rgba(242, 242, 242, 0.28), transparent 60%),
+    radial-gradient(1px 1px at 52% 29%, rgba(210, 195, 246, 0.26), transparent 60%),
+    radial-gradient(1px 1px at 84% 31%, rgba(242, 242, 242, 0.3), transparent 60%),
+    radial-gradient(1px 1px at 33% 38%, rgba(242, 242, 242, 0.2), transparent 60%),
+    radial-gradient(1.2px 1.2px at 68% 44%, rgba(242, 242, 242, 0.34), transparent 60%),
+    radial-gradient(1px 1px at 9% 52%, rgba(242, 242, 242, 0.24), transparent 60%),
+    radial-gradient(1px 1px at 91% 55%, rgba(242, 242, 242, 0.22), transparent 60%),
+    radial-gradient(1px 1px at 47% 61%, rgba(242, 242, 242, 0.3), transparent 60%),
+    radial-gradient(1px 1px at 22% 69%, rgba(226, 216, 246, 0.28), transparent 60%),
+    radial-gradient(1px 1px at 76% 73%, rgba(242, 242, 242, 0.2), transparent 60%),
+    radial-gradient(1px 1px at 38% 81%, rgba(242, 242, 242, 0.26), transparent 60%),
+    radial-gradient(1px 1px at 88% 86%, rgba(242, 242, 242, 0.3), transparent 60%),
+    radial-gradient(1px 1px at 15% 93%, rgba(242, 242, 242, 0.22), transparent 60%),
+    radial-gradient(1px 1px at 60% 96%, rgba(242, 242, 242, 0.28), transparent 60%);
+  animation: about-drift 92s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
+
+.about-stars-mid {
+  opacity: 0.62;
+  filter: blur(0.2px);
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 8%, rgba(242, 242, 242, 0.48), transparent 60%),
+    radial-gradient(1px 1px at 58% 13%, rgba(242, 242, 242, 0.24), transparent 60%),
+    radial-gradient(1px 1px at 88% 21%, rgba(226, 214, 246, 0.3), transparent 60%),
+    radial-gradient(1.3px 1.3px at 41% 34%, rgba(242, 242, 242, 0.3), transparent 60%),
+    radial-gradient(1px 1px at 72% 40%, rgba(242, 242, 242, 0.22), transparent 60%),
+    radial-gradient(1px 1px at 25% 48%, rgba(242, 242, 242, 0.2), transparent 60%),
+    radial-gradient(1.2px 1.2px at 83% 58%, rgba(242, 242, 242, 0.28), transparent 60%),
+    radial-gradient(1px 1px at 55% 67%, rgba(226, 214, 246, 0.26), transparent 60%),
+    radial-gradient(1px 1px at 11% 77%, rgba(242, 242, 242, 0.22), transparent 60%),
+    radial-gradient(1.2px 1.2px at 69% 84%, rgba(242, 242, 242, 0.26), transparent 60%),
+    radial-gradient(1px 1px at 30% 91%, rgba(242, 242, 242, 0.2), transparent 60%),
+    radial-gradient(1px 1px at 94% 95%, rgba(242, 242, 242, 0.24), transparent 60%);
+  animation: about-drift 128s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate-reverse;
+}
+
+/* Even sparser, only below the glass, so the field thins out */
+.about-stars-deep {
+  opacity: 0.45;
+  background-image:
+    radial-gradient(1px 1px at 20% 36%, rgba(242, 242, 242, 0.3), transparent 60%),
+    radial-gradient(1px 1px at 64% 52%, rgba(242, 242, 242, 0.22), transparent 60%),
+    radial-gradient(1px 1px at 38% 64%, rgba(226, 214, 246, 0.24), transparent 60%),
+    radial-gradient(1px 1px at 80% 71%, rgba(242, 242, 242, 0.2), transparent 60%),
+    radial-gradient(1px 1px at 7% 83%, rgba(242, 242, 242, 0.24), transparent 60%),
+    radial-gradient(1px 1px at 52% 89%, rgba(242, 242, 242, 0.2), transparent 60%);
+  animation: about-drift 160s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
+
+@keyframes about-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.72;
+  }
+  to {
+    transform: translate3d(8px, -6px, 0);
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   01 — PROJECT / GLASS
+   ========================================================= */
+
+.about-section {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.about-glass {
+  --lx: 50%;
+  --ly: 24%;
+  --px: 0.5;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 36px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(242, 242, 242, 0.095) 0%,
+      rgba(210, 195, 246, 0.04) 16%,
+      rgba(18, 16, 28, 0.2) 48%,
+      rgba(6, 6, 10, 0.42) 100%
+    );
+  background-color: rgba(14, 12, 22, 0.42);
+  border: 1px solid rgba(242, 242, 242, 0.16);
+  backdrop-filter: blur(64px) saturate(190%);
+  -webkit-backdrop-filter: blur(64px) saturate(190%);
+  box-shadow:
+    inset 0 1px 0 rgba(242, 242, 242, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    inset 0 0 60px rgba(210, 195, 246, 0.025),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 32px 90px rgba(0, 0, 0, 0.45);
+}
+
+.about-glass-sheen {
+  position: absolute;
+  z-index: 0;
+  top: -46%;
+  left: calc(-8% + (var(--px) * 18%));
+  width: 78%;
+  height: 60%;
+  background: linear-gradient(
+    180deg,
+    rgba(242, 242, 242, 0.15),
+    rgba(210, 195, 246, 0.05) 38%,
+    rgba(242, 242, 242, 0)
+  );
+  filter: blur(34px);
+  opacity: 0.7;
+  pointer-events: none;
+  transition:
+    left 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.8s ease;
+}
+
+.about-page.is-lit .about-glass-sheen {
+  opacity: 0.95;
+}
+
+.about-glass-edge {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(242, 242, 242, 0),
+    rgba(242, 242, 242, 0.5),
+    rgba(210, 195, 246, 0.34),
+    rgba(242, 242, 242, 0)
+  );
+  pointer-events: none;
+}
+
+.about-glass-light {
+  position: absolute;
+  z-index: 1;
+  left: var(--lx);
+  top: var(--ly);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(242, 242, 242, 0.07) 0%,
+    rgba(198, 180, 230, 0.028) 32%,
+    transparent 66%
+  );
+  filter: blur(16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-page.is-lit .about-glass-light {
+  opacity: 1;
+}
+
+.about-inner {
+  position: relative;
+  z-index: 3;
+  padding: 72px 96px 56px;
+  text-align: center;
+}
+
+/* ---------- EmpireX identity mark ---------- */
+
+.empirex-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 0 auto 30px;
+}
+
+.empirex-avatar {
+  width: 104px;
+  height: 104px;
+  padding: 3px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(242, 242, 242, 0.24), rgba(242, 242, 242, 0.04));
+  border: 1px solid rgba(242, 242, 242, 0.16);
+  box-shadow:
+    inset 0 1px 0 rgba(242, 242, 242, 0.26),
+    0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.empirex-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  background: #111118;
+}
+
+.empirex-word {
+  color: #8d8d8d;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ---------- Type (matched to Rockets hero) ---------- */
+
+.about-title {
+  margin: 0;
+  color: #f2f2f2;
+  font-size: clamp(46px, 6vw, 72px);
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.about-copy {
+  width: min(64ch, 100%);
+  margin: 18px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.about-copy p {
+  margin: 0;
+  font-weight: 400;
+}
+
+.about-copy p:first-child {
+  color: rgba(242, 242, 242, 0.78);
+  font-size: clamp(17px, 1.7vw, 20px);
+  letter-spacing: -0.018em;
+  line-height: 1.45;
+}
+
+.about-copy p:last-child {
+  color: rgba(242, 242, 242, 0.58);
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.7;
+}
+
+.about-signature {
+  margin: 22px 0 0;
+  color: #f2f2f2;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+}
+
+/* ---------- Spec layout: quiet, static, no cards ---------- */
+
+.about-meta {
+  margin: 48px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px 36px;
+  text-align: left;
+}
+
+.about-spec {
+  min-width: 0;
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.about-spec.span-2 { grid-column: span 2; }
+.about-spec.span-4 { grid-column: span 4; }
+
+.about-spec dt {
+  margin: 0;
+  color: #8d8d8d;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.about-spec dd {
+  margin: 6px 0 0;
+  color: #f2f2f2;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+/* ---------- About note ---------- */
+
+.about-project-note {
+  width: min(60ch, 100%);
+  margin: 44px auto 0;
+  text-align: center;
+}
+
+.about-kicker {
+  margin: 0;
+  color: #8d8d8d;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.about-project-note p:last-child {
+  margin: 12px 0 0;
+  color: #9a9a9a;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.about-nox {
+  width: min(54ch, 100%);
+  margin: 26px auto 0;
+  color: #6f6f6f;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* =========================================================
+   BRIDGE — no cut, just room for the atmosphere to breathe
+   ========================================================= */
+
+.about-bridge {
+  position: relative;
+  z-index: 1;
+  height: 120px;
+}
+
+/* =========================================================
+   02 — DEVELOPER (open composition, no glass: same pattern
+   as Rockets, image left / copy right)
+   ========================================================= */
+
+.about-index {
+  margin: 0;
+  color: #8d8d8d;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.about-dev {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 80px 0 88px;
+}
+
+.about-dev-inner {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 340px minmax(280px, 1fr);
+  column-gap: 84px;
+  align-items: center;
+}
+
+.about-dev-media {
+  display: flex;
+  justify-content: center;
+}
+
+.dev-avatar {
+  width: 200px;
+  height: 200px;
+  padding: 3px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(242, 242, 242, 0.22), rgba(242, 242, 242, 0.03));
+  border: 1px solid rgba(242, 242, 242, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(242, 242, 242, 0.24),
+    0 18px 44px rgba(0, 0, 0, 0.35);
+}
+
+.dev-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  background: #111118;
+}
+
+.about-dev-copy {
+  max-width: 480px;
+  text-align: left;
+}
+
+.about-dev-name {
+  margin: 14px 0 0;
+  color: #f2f2f2;
+  font-size: clamp(42px, 4.6vw, 64px);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.about-dev-aka {
+  margin: 16px 0 0;
+  color: #f2f2f2;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+}
+
+.about-dev-intro {
+  margin: 14px 0 0;
+  max-width: 460px;
+  color: #9a9a9a;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.about-facts {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+}
+
+.about-facts li {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f2f2f2;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.about-facts li span:first-child {
+  flex: none;
+  color: #8d8d8d;
+}
+
+.about-facts li span:last-child {
+  text-align: right;
+}
+
+/* =========================================================
+   03 — CONTENT
+   ========================================================= */
+
+.about-connect {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 72px 0 96px;
+  text-align: center;
+}
+
+.about-connect-title {
+  margin: 14px 0 0;
+  color: #f2f2f2;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.about-links {
+  list-style: none;
+  margin: 44px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 56px;
+}
+
+.about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #f2f2f2;
+  text-decoration: none;
+  opacity: 0.5;
+  transition:
+    opacity 0.45s ease,
+    filter 0.45s ease;
+}
+
+.about-link svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.about-link-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.about-link-name {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
+.about-link-handle {
+  color: #8d8d8d;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.about-link:hover,
+.about-link:focus-visible {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(198, 180, 230, 0.28));
+}
+
+.about-link:focus-visible {
+  outline: 1px solid rgba(242, 242, 242, 0.4);
+  outline-offset: 6px;
+  border-radius: 6px;
+}
+
+/* =========================================================
+   FINAL
+   ========================================================= */
+
+.about-final {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 96px 0 120px;
+  text-align: center;
+}
+
+.about-final-title {
+  max-width: 14ch;
+  margin: 0;
+  color: #f2f2f2;
+  font-size: clamp(40px, 5.2vw, 64px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.about-final-text {
+  max-width: 46ch;
+  margin: 22px 0 0;
+  color: #9a9a9a;
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.6;
+}
+
+.about-final-sign {
+  margin-top: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-final-mark {
+  color: #f2f2f2;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
+}
+
+.about-final-sub {
+  color: #6f6f6f;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1440px) {
+  .about-page {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .about-section {
+    width: min(1200px, 100%);
+  }
+
+  .about-dev-inner {
+    max-width: 1140px;
+    grid-template-columns: 360px minmax(280px, 1fr);
+    column-gap: 96px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .about-page {
+    padding: 132px 28px 0;
+  }
+
+  .about-inner {
+    padding: 56px 40px 40px;
+  }
+
+  .about-glass {
+    border-radius: 30px;
+  }
+
+  .empirex-avatar {
+    width: 96px;
+    height: 96px;
+  }
+
+  .about-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 28px;
+  }
+
+  .about-spec.span-2,
+  .about-spec.span-4 {
+    grid-column: span 2;
+  }
+
+  .about-copy p:last-child {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .about-bridge {
+    height: 80px;
+  }
+}
+
+@media (max-width: 980px) {
+  .about-dev {
+    min-height: auto;
+    padding: 56px 0 72px;
+  }
+
+  .about-dev-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 36px;
+  }
+
+  .dev-avatar {
+    width: 160px;
+    height: 160px;
+  }
+
+  .about-dev-copy {
+    max-width: 520px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .about-page {
+    padding: 112px 16px 0;
+    background:
+      radial-gradient(420px 260px at 50% 380px, rgba(72, 42, 96, 0.15), transparent 72%),
+      radial-gradient(520px 320px at 20% 1500px, rgba(42, 34, 86, 0.1), transparent 72%),
+      radial-gradient(520px 320px at 80% 2400px, rgba(62, 28, 70, 0.08), transparent 72%),
+      #000;
+  }
+
+  .about-field,
+  .about-glass-light {
+    display: none;
+  }
+
+  .about-glass {
+    border-radius: 24px;
+    backdrop-filter: blur(32px) saturate(165%);
+    -webkit-backdrop-filter: blur(32px) saturate(165%);
+  }
+
+  .about-inner {
+    padding: 40px 20px 32px;
+  }
+
+  .empirex-avatar {
+    width: 88px;
+    height: 88px;
+  }
+
+  .empirex-lockup {
+    margin-bottom: 24px;
+  }
+
+  .about-title {
+    font-size: clamp(42px, 13vw, 58px);
+  }
+
+  .about-copy {
+    margin-top: 14px;
+  }
+
+  .about-copy p:first-child {
+    font-size: 17px;
+    line-height: 1.45;
+  }
+
+  .about-meta {
+    margin-top: 36px;
+    gap: 16px 18px;
+  }
+
+  .about-spec dd {
+    font-size: 14px;
+  }
+
+  .about-project-note {
+    margin-top: 36px;
+  }
+
+  .about-nox {
+    margin-top: 20px;
+  }
+
+  .about-bridge {
+    height: 56px;
+  }
+
+  .about-connect {
+    padding: 56px 0 72px;
+  }
+
+  .about-links {
+    margin-top: 32px;
+    gap: 22px 36px;
+  }
+
+  .about-final {
+    min-height: auto;
+    padding: 72px 0 96px;
+  }
+
+  .about-final-sign {
+    margin-top: 56px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-dev-name {
+    font-size: 42px;
+  }
+
+  .about-dev-aka {
+    font-size: 16px;
+  }
+
+  .about-dev-intro {
+    font-size: 14px;
+  }
+
+  .about-facts li {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .about-facts li span:last-child {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page {
+    padding: 104px 16px 0;
+  }
+
+  .about-title {
+    font-size: 42px;
+  }
+
+  .about-copy p:first-child {
+    font-size: 16px;
+  }
+
+  .about-copy p:last-child,
+  .about-signature {
+    font-size: 14px;
+  }
+
+  .about-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dev-avatar {
+    width: 140px;
+    height: 140px;
+  }
+
+  .about-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .about-final-title {
+    font-size: 38px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-stars {
+    animation: none;
+  }
+
+  .about-field,
+  .about-glass-light {
+    display: none;
+  }
+
+  .about-page .rv {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .about-link {
+    transition: none;
+  }
+}

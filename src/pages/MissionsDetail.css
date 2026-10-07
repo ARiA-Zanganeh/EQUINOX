@@ -1,0 +1,763 @@
+/* =========================================================
+   EQUINOX — HUMAN EXPLORATION
+   Detail page for Missions
+   Same visual language as Missions.css
+   ========================================================= */
+
+.missions-detail,
+.missions-detail *,
+.missions-detail *::before,
+.missions-detail *::after {
+  box-sizing: border-box;
+}
+
+.missions-detail {
+  min-height: 100vh;
+  background: #000;
+  color: #f2f2f2;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.missions-detail-intro {
+  position: relative;
+  height: 100vh;
+  background: #000;
+}
+
+.missions-detail-hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.missions-detail-hero-glow {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse 62% 72% at 82% 52%,
+      rgba(255, 255, 255, 0.10) 0%,
+      rgba(255, 255, 255, 0.035) 42%,
+      rgba(0, 0, 0, 0) 76%
+    );
+
+  pointer-events: none;
+}
+
+.missions-detail-hero-media {
+  position: absolute;
+  top: 0;
+  right: 5vw;
+  bottom: 0;
+
+  width: min(48vw, 680px);
+
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+.missions-detail-hero-media img {
+  display: block;
+
+  max-width: 100%;
+  max-height: 78%;
+
+  object-fit: contain;
+  object-position: center;
+
+  opacity: 0;
+  transform: scale(1.04);
+
+  animation:
+    human-exploration-hero-in
+    1.6s cubic-bezier(0.22, 1, 0.36, 1)
+    0.2s forwards;
+}
+
+@keyframes human-exploration-hero-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.missions-detail-hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 850px;
+
+  padding: 120px 8vw 80px;
+}
+
+.missions-detail-eyebrow {
+  margin: 0 0 18px;
+
+  color: #8d8d8d;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+
+  text-transform: uppercase;
+}
+
+.missions-detail-hero-content h1 {
+  margin: 0;
+
+  color: #f2f2f2;
+
+  font-size: clamp(48px, 6vw, 74px);
+  font-weight: 600;
+
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.missions-detail-lead {
+  margin: 18px 0 0;
+
+  max-width: 640px;
+
+  color: rgba(242, 242, 242, 0.78);
+
+  font-size: clamp(17px, 1.7vw, 20px);
+  font-weight: 400;
+
+  letter-spacing: -0.018em;
+  line-height: 1.45;
+}
+
+.missions-detail-lines {
+  margin: 28px 0 0;
+
+  max-width: 560px;
+
+  color: rgba(242, 242, 242, 0.56);
+
+  font-size: 16px;
+  font-weight: 400;
+
+  letter-spacing: -0.01em;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   INTRODUCTION
+   ========================================================= */
+
+.missions-detail-intro-section {
+  padding: 150px 56px 160px;
+
+  background: #000;
+}
+
+.missions-detail-intro-inner {
+  width: 100%;
+  max-width: 1080px;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 340px minmax(280px, 1fr);
+
+  column-gap: 84px;
+  align-items: start;
+}
+
+.missions-detail-intro-label {
+  padding-top: 8px;
+}
+
+.missions-detail-intro-label span {
+  color: #8d8d8d;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+}
+
+.missions-detail-intro-copy {
+  max-width: 650px;
+}
+
+.missions-detail-intro-copy h2 {
+  margin: 0;
+
+  color: #f2f2f2;
+
+  font-size: clamp(40px, 4.5vw, 60px);
+  font-weight: 600;
+
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+}
+
+.missions-detail-intro-copy p {
+  max-width: 600px;
+
+  margin: 28px 0 0;
+
+  color: #9a9a9a;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  letter-spacing: -0.01em;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   HUMAN MISSION SECTION
+   ========================================================= */
+
+.human-mission {
+  padding: 130px 56px 140px;
+
+  background: #000;
+  color: #f2f2f2;
+}
+
+.human-mission-inner {
+  width: 100%;
+  max-width: 1080px;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 340px minmax(280px, 1fr);
+
+  column-gap: 84px;
+
+  align-items: start;
+}
+
+/* =========================================================
+   LEFT HEADER
+   ========================================================= */
+
+.human-mission-head {
+  position: sticky;
+  top: 120px;
+}
+
+.human-mission-index {
+  margin: 0;
+
+  color: #8d8d8d;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+
+  text-transform: uppercase;
+}
+
+.human-mission-title {
+  margin: 14px 0 0;
+
+  color: #f2f2f2;
+
+  font-size: clamp(40px, 4.2vw, 60px);
+  font-weight: 650;
+
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.human-mission-meta {
+  margin: 18px 0 0;
+
+  color: #8d8d8d;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   RIGHT CONTENT
+   ========================================================= */
+
+.human-mission-content {
+  max-width: 520px;
+}
+
+.human-mission-copy {
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+/* Opening paragraph */
+
+.human-mission-intro {
+  margin: 0;
+
+  padding: 30px 0 0;
+
+  color: #f2f2f2;
+
+  font-size: 19px;
+  font-weight: 500;
+
+  letter-spacing: -0.015em;
+  line-height: 1.55;
+}
+
+/* Main paragraphs */
+
+.human-mission-text {
+  margin: 22px 0 0;
+
+  color: #9a9a9a;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  letter-spacing: -0.005em;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.human-mission-image {
+  width: 100%;
+
+  margin: 58px 0 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background: #080808;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.human-mission-image img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  aspect-ratio: 16 / 10;
+
+  object-fit: cover;
+
+  opacity: 0.92;
+
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
+}
+
+.human-mission-image:hover img {
+  transform: scale(1.025);
+  opacity: 1;
+}
+
+/* =========================================================
+   FACTS
+   ========================================================= */
+
+.human-mission-facts {
+  margin-top: 58px;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.human-fact {
+  min-height: 105px;
+
+  padding: 24px 20px 24px 0;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.human-fact:nth-child(odd) {
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.human-fact:nth-child(even) {
+  padding-left: 20px;
+}
+
+.human-fact strong {
+  display: block;
+
+  color: #f2f2f2;
+
+  font-size: 23px;
+  font-weight: 600;
+
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.human-fact span {
+  display: block;
+
+  margin-top: 9px;
+
+  color: #8d8d8d;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 0.07em;
+  line-height: 1.45;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   REVEAL
+   ========================================================= */
+
+.missions-detail-intro-inner,
+.human-mission-head,
+.human-mission-content {
+  opacity: 0;
+  transform: translateY(22px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.missions-detail-intro-section.is-visible
+  .missions-detail-intro-inner,
+.human-mission.is-visible .human-mission-head,
+.human-mission.is-visible .human-mission-content {
+  opacity: 1;
+  transform: none;
+}
+
+.human-mission.is-visible .human-mission-content {
+  transition-delay: 0.15s;
+}
+
+/* =========================================================
+   CLOSING
+   ========================================================= */
+
+.missions-detail-close {
+  padding: 180px 56px 200px;
+
+  background: #000;
+}
+
+.missions-detail-close-inner {
+  width: 100%;
+  max-width: 1080px;
+
+  margin: 0 auto;
+}
+
+.missions-detail-close-inner p {
+  margin: 0;
+
+  color: #8d8d8d;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.missions-detail-close-inner h2 {
+  margin: 18px 0 0;
+
+  color: #f2f2f2;
+
+  font-size: clamp(48px, 7vw, 84px);
+  font-weight: 600;
+
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+}
+
+.missions-detail-close-inner span {
+  display: block;
+
+  margin-top: 28px;
+
+  color: #8d8d8d;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  letter-spacing: 0.02em;
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1440px) {
+  .missions-detail-hero-content {
+    max-width: 900px;
+  }
+
+  .missions-detail-intro-section,
+  .human-mission,
+  .missions-detail-close {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .missions-detail-intro-inner,
+  .human-mission-inner,
+  .missions-detail-close-inner {
+    max-width: 1140px;
+  }
+
+  .missions-detail-intro-inner,
+  .human-mission-inner {
+    grid-template-columns: 360px minmax(280px, 1fr);
+    column-gap: 96px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 980px) {
+  .missions-detail-intro-section {
+    padding: 110px 24px 120px;
+  }
+
+  .missions-detail-intro-inner,
+  .human-mission-inner {
+    grid-template-columns: 1fr;
+    row-gap: 42px;
+  }
+
+  .missions-detail-intro-copy {
+    max-width: 650px;
+  }
+
+  .human-mission {
+    padding: 100px 24px 110px;
+  }
+
+  .human-mission-head {
+    position: static;
+  }
+
+  .human-mission-content {
+    max-width: 620px;
+  }
+
+  .missions-detail-close {
+    padding: 140px 24px 160px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .missions-detail-intro,
+  .missions-detail-hero {
+    min-height: 100svh;
+    height: 100svh;
+  }
+
+  .missions-detail-hero-media {
+    right: -12vw;
+    top: auto;
+    bottom: 0;
+
+    width: 92vw;
+    height: 58%;
+
+    opacity: 0.38;
+  }
+
+  .missions-detail-hero-media img {
+    max-height: 100%;
+  }
+
+  .missions-detail-hero-content {
+    max-width: 100%;
+
+    padding: 110px 24px 64px;
+  }
+
+  .missions-detail-hero-content h1 {
+    font-size: clamp(42px, 12vw, 58px);
+  }
+
+  .missions-detail-lead {
+    margin-top: 15px;
+    font-size: 17px;
+  }
+
+  .missions-detail-lines {
+    margin-top: 22px;
+    font-size: 15px;
+  }
+
+  .missions-detail-intro-section {
+    padding: 90px 24px 100px;
+  }
+
+  .missions-detail-intro-copy h2 {
+    font-size: clamp(40px, 11vw, 54px);
+  }
+
+  .human-mission {
+    padding: 82px 24px 92px;
+  }
+
+  .human-mission-title {
+    font-size: clamp(40px, 11vw, 54px);
+  }
+
+  .human-mission-intro {
+    font-size: 18px;
+  }
+
+  .human-mission-text {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .human-mission-image {
+    margin-top: 44px;
+  }
+
+  .human-mission-facts {
+    margin-top: 44px;
+  }
+
+  .missions-detail-close {
+    padding: 110px 24px 130px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .missions-detail-hero-content {
+    padding: 100px 20px 52px;
+  }
+
+  .missions-detail-hero-content h1 {
+    font-size: 42px;
+  }
+
+  .missions-detail-lead {
+    font-size: 16px;
+  }
+
+  .missions-detail-lines {
+    font-size: 14px;
+  }
+
+  .missions-detail-intro-section {
+    padding: 76px 16px 88px;
+  }
+
+  .human-mission {
+    padding: 72px 16px 80px;
+  }
+
+  .human-mission-title {
+    font-size: 40px;
+  }
+
+  .human-mission-meta {
+    font-size: 11px;
+  }
+
+  .human-mission-intro {
+    font-size: 17px;
+  }
+
+  .human-mission-text {
+    font-size: 14px;
+  }
+
+  .human-mission-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .human-fact,
+  .human-fact:nth-child(even) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .human-fact:nth-child(odd) {
+    border-right: none;
+  }
+
+  .missions-detail-close {
+    padding: 90px 16px 110px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .missions-detail-hero-media img {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .missions-detail-intro-inner,
+  .human-mission-head,
+  .human-mission-content {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .human-mission-image img {
+    transition: none;
+  }
+}

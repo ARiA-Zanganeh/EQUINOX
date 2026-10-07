@@ -1,0 +1,625 @@
+/* =========================================================
+   EQUINOX — SPACE PAGE
+   Hero cover matching the artboard layout
+   ========================================================= */
+
+.space-page,
+.space-page *,
+.space-page *::before,
+.space-page *::after {
+  box-sizing: border-box;
+}
+
+.space-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #000000;
+  color: #f2f2f2;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.space-hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 56px 72px;
+}
+
+.space-hero-inner {
+  width: 100%;
+  max-width: 1280px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.78fr);
+  column-gap: 72px;
+  row-gap: 40px;
+  align-items: center;
+}
+
+/* =========================================================
+   VIDEO FRAME
+   Desktop: framed rectangle, not full-bleed
+   ========================================================= */
+
+.space-media {
+  display: flex;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.space-video-frame {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 16 / 9.35;
+  background: #000000;
+  border: 1px solid #ffffff;
+  overflow: hidden;
+}
+
+.space-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  background: #000000;
+  pointer-events: none;
+}
+
+/* =========================================================
+   COPY
+   ========================================================= */
+
+.space-copy {
+  min-width: 0;
+  max-width: 460px;
+  justify-self: start;
+  text-align: center;
+  color: #f2f2f2;
+}
+
+.space-title {
+  margin: 0;
+  color: #f2f2f2;
+  font-size: clamp(30px, 2.55vw, 42px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.12;
+  text-transform: uppercase;
+}
+
+.space-subtitle {
+  margin: 12px 0 0;
+  color: #9a9a9a;
+  font-size: clamp(22px, 2.05vw, 34px);
+  font-weight: 650;
+  letter-spacing: 0.045em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.space-body {
+  margin: 18px auto 0;
+  max-width: 390px;
+  color: rgba(242, 242, 242, 0.88);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   Keep the video as a contained panel, not a full canvas
+   ========================================================= */
+
+@media (min-width: 1440px) {
+  .space-hero {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .space-hero-inner {
+    max-width: 1360px;
+    column-gap: 88px;
+  }
+
+  .space-video-frame {
+    max-width: 760px;
+  }
+}
+
+/* =========================================================
+   SMALL DESKTOP / TABLET
+   ========================================================= */
+
+@media (max-width: 1080px) {
+  .space-hero {
+    padding: 110px 36px 64px;
+  }
+
+  .space-hero-inner {
+    grid-template-columns: minmax(0, 1.05fr) minmax(240px, 0.8fr);
+    column-gap: 40px;
+  }
+
+  .space-title {
+    letter-spacing: 0.05em;
+  }
+
+  .space-subtitle {
+    font-size: clamp(20px, 2.4vw, 28px);
+  }
+}
+
+@media (max-width: 860px) {
+  .space-hero {
+    align-items: flex-start;
+    padding: 104px 24px 56px;
+  }
+
+  .space-hero-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 32px;
+  }
+
+  .space-media {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .space-video-frame {
+    width: min(100%, 640px);
+    max-width: 640px;
+  }
+
+  .space-copy {
+    max-width: 520px;
+    justify-self: center;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .space-hero {
+    padding: 92px 16px 48px;
+  }
+
+  .space-video-frame {
+    width: 100%;
+    max-width: none;
+  }
+
+  .space-title {
+    font-size: 26px;
+    letter-spacing: 0.045em;
+  }
+
+  .space-subtitle {
+    margin-top: 10px;
+    font-size: 18px;
+    letter-spacing: 0.035em;
+  }
+
+  .space-body {
+    margin-top: 14px;
+    max-width: 340px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 400px) {
+  .space-title {
+    font-size: 22px;
+  }
+
+  .space-subtitle {
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   PLANET
+   One frame size. Portrait files are scaled to match it.
+   ========================================================= */
+
+.planet {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: 120px 56px 88px;
+  background: #000000;
+  color: #f2f2f2;
+}
+
+.planet-inner {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 340px minmax(280px, 1fr);
+  column-gap: 84px;
+  align-items: center;
+  justify-content: center;
+}
+
+.planet-media {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.planet-frame {
+  width: 340px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  border: none;
+  overflow: hidden;
+  background: transparent;
+}
+
+.planet-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.planet.is-visible .planet-image {
+  transform: scale(1);
+}
+
+.planet-image.is-portrait {
+  transform: scale(1.58);
+}
+
+.planet.is-visible .planet-image.is-portrait {
+  transform: scale(1.5);
+}
+
+.planet-image.rings {
+  transform: scale(1.16);
+}
+
+.planet.is-visible .planet-image.rings {
+  transform: scale(1.1);
+}
+
+.planet-copy {
+  max-width: 480px;
+  text-align: left;
+}
+
+.planet-index,
+.planet-name,
+.planet-lead,
+.planet-body,
+.planet-stats,
+.planet-block,
+.planet-note {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.planet.is-visible .planet-index,
+.planet.is-visible .planet-name,
+.planet.is-visible .planet-lead,
+.planet.is-visible .planet-body,
+.planet.is-visible .planet-stats,
+.planet.is-visible .planet-block,
+.planet.is-visible .planet-note {
+  opacity: 1;
+  transform: none;
+}
+
+.planet.is-visible .planet-index { transition-delay: 0.05s; }
+.planet.is-visible .planet-name { transition-delay: 0.14s; }
+.planet.is-visible .planet-lead { transition-delay: 0.26s; }
+.planet.is-visible .planet-body { transition-delay: 0.36s; }
+.planet.is-visible .planet-stats { transition-delay: 0.48s; }
+.planet.is-visible .planet-block { transition-delay: 0.58s; }
+.planet.is-visible .planet-note { transition-delay: 0.7s; }
+
+.planet-index {
+  margin: 0;
+  color: #8d8d8d;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.planet-name {
+  margin: 14px 0 0;
+  color: #f2f2f2;
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+}
+
+.planet-lead {
+  margin: 18px 0 0;
+  color: #f2f2f2;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+}
+
+.planet-body {
+  margin: 14px 0 0;
+  max-width: 460px;
+  color: #9a9a9a;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.planet-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 28px;
+  margin: 32px 0 0;
+}
+
+.planet-stats div {
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.planet-stats dt {
+  margin: 0;
+  color: #8d8d8d;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.planet-stats dd {
+  margin: 6px 0 0;
+  color: #f2f2f2;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.planet-block {
+  margin-top: 34px;
+}
+
+.planet-kicker {
+  margin: 0;
+  color: #8d8d8d;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.planet-facts {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.planet-facts li {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f2f2f2;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.planet-facts li span:first-child {
+  color: #8d8d8d;
+}
+
+.planet-facts li span:last-child {
+  text-align: right;
+}
+
+.planet-note {
+  margin: 22px 0 0;
+  max-width: 460px;
+  color: #6f6f6f;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (min-width: 1440px) {
+  .planet {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .planet-inner {
+    max-width: 1140px;
+    grid-template-columns: 360px minmax(280px, 1fr);
+    column-gap: 96px;
+  }
+
+  .planet-frame {
+    width: 360px;
+  }
+}
+
+@media (max-width: 980px) {
+  .planet {
+    min-height: auto;
+    padding: 88px 24px 72px;
+  }
+
+  .planet-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 32px;
+  }
+
+  .planet-frame {
+    width: min(58vw, 280px);
+  }
+
+  .planet-copy {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 640px) {
+  .planet {
+    padding: 76px 16px 56px;
+  }
+
+  .planet-frame {
+    width: min(68vw, 230px);
+  }
+
+  .planet-name {
+    font-size: 42px;
+  }
+
+  .planet-lead {
+    font-size: 16px;
+  }
+
+  .planet-body {
+    font-size: 14px;
+  }
+
+  .planet-stats {
+    gap: 16px 18px;
+  }
+
+  .planet-stats dd {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .planet-frame {
+    width: min(64vw, 200px);
+  }
+
+  .planet-name {
+    font-size: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planet-index,
+  .planet-name,
+  .planet-lead,
+  .planet-body,
+  .planet-stats,
+  .planet-block,
+  .planet-note,
+  .planet-image {
+    opacity: 1;
+    transition: none;
+  }
+
+  .planet-image {
+    transform: scale(1);
+  }
+
+  .planet-image.is-portrait {
+    transform: scale(1.5);
+  }
+
+  .planet-image.rings {
+    transform: scale(1.1);
+  }
+}
+
+/* =========================================================
+   NEXT STEP
+   Closing text + card + button, after the last planet.
+   Paste at the end of Space.css
+   ========================================================= */
+
+.space-next {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  padding: 96px 56px 140px;
+  background: #000000;
+  color: #f2f2f2;
+  text-align: center;
+}
+
+.space-next-text {
+  max-width: 52ch;
+  margin: 0;
+  color: #9a9a9a;
+  font-size: clamp(16px, 1.6vw, 20px);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.space-next-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+}
+
+/* reveal, same pattern as the planets */
+.space-next-text,
+.space-next-action {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.space-next.is-visible .space-next-text,
+.space-next.is-visible .space-next-action {
+  opacity: 1;
+  transform: none;
+}
+
+.space-next.is-visible .space-next-action {
+  transition-delay: 0.2s;
+}
+
+@media (max-width: 640px) {
+  .space-next {
+    gap: 48px;
+    padding: 64px 16px 100px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .space-next-text,
+  .space-next-action {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

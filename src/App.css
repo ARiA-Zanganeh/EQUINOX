@@ -1,0 +1,774 @@
+/* =========================================================
+   EQUINOX — PREMIUM RESPONSIVE LIQUID GLASS NAVBAR
+   ========================================================= */
+
+.navbar,
+.navbar *,
+.navbar *::before,
+.navbar *::after,
+.navbar-mobile-menu,
+.navbar-mobile-menu *,
+.navbar-mobile-menu *::before,
+.navbar-mobile-menu *::after {
+  box-sizing: border-box;
+}
+
+.navbar,
+.navbar-link,
+.navbar-logo,
+.navbar-menu-button,
+.navbar-mobile-link,
+.navbar-mobile-label {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+  position: fixed;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1200;
+  width: fit-content;
+  max-width: min(100% - 24px, 1280px);
+  min-height: 76px;
+  margin: 0;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 4px;
+  background: rgba(28, 28, 40, 0.14);
+  border: 1px solid rgba(242, 242, 242, 0.12);
+  border-radius: 999px;
+  backdrop-filter: blur(34px) saturate(180%);
+  -webkit-backdrop-filter: blur(34px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(242, 242, 242, 0.20),
+    inset 0 -1px 0 rgba(28, 28, 40, 0.18),
+    0 8px 35px rgba(28, 28, 40, 0.12);
+  overflow: hidden;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -80%;
+  left: 8%;
+  width: 84%;
+  height: 150%;
+  background: linear-gradient(
+    180deg,
+    rgba(242, 242, 242, 0.11),
+    rgba(242, 242, 242, 0)
+  );
+  border-radius: 999px;
+  filter: blur(22px);
+  pointer-events: none;
+}
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.navbar-logo {
+  position: relative;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s ease;
+}
+
+.navbar-logo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+.navbar-logo:active {
+  transform: scale(0.92);
+}
+
+/* =========================================================
+   DESKTOP LINKS
+   ========================================================= */
+
+.navbar-links {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  min-width: 0;
+  gap: 2px;
+}
+
+.navbar-link {
+  position: relative;
+  min-width: 86px;
+  width: 86px;
+  height: 58px;
+  min-height: 58px;
+  max-height: 58px;
+  padding: 6px 6px;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #f2f2f2;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+  line-height: 1.1;
+  border-radius: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  transition:
+    color 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar-link span {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  line-height: 1.1;
+}
+
+.navbar-icon {
+  position: relative;
+  z-index: 2;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.82;
+  filter: brightness(0) invert(1);
+  transition:
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.38s ease;
+}
+
+/* About DeV: same HEIGHT as every other item.
+   Only a little extra WIDTH so the label stays on one line. */
+.navbar-link.is-about {
+  min-width: 96px;
+  width: 96px;
+  height: 58px;
+  min-height: 58px;
+  max-height: 58px;
+  padding: 6px 6px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.1;
+  overflow: hidden;
+}
+
+.navbar-link.is-about span {
+  display: block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+/* Code icon file has extra inner padding — enlarge the box only. */
+.navbar-link.is-about .navbar-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  object-position: center;
+  flex: 0 0 auto;
+}
+
+.navbar-link::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  z-index: 0;
+  border-radius: 17px;
+  background: linear-gradient(
+    135deg,
+    rgba(210, 195, 246, 0.22),
+    rgba(242, 242, 242, 0.08) 45%,
+    rgba(28, 28, 40, 0.10)
+  );
+  border: 1px solid rgba(242, 242, 242, 0.18);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  box-shadow:
+    inset 0 1px 0 rgba(242, 242, 242, 0.34),
+    inset 0 -1px 0 rgba(28, 28, 40, 0.12);
+  opacity: 0;
+  transform: scale(0.72);
+  filter: blur(3px);
+  transition:
+    opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.42s ease;
+}
+
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 22%;
+  right: 22%;
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(242, 242, 242, 0),
+    rgba(210, 195, 246, 0.70),
+    rgba(242, 242, 242, 0)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.navbar-link:hover {
+  color: #f2f2f2;
+  transform: translateY(-1px);
+}
+
+.navbar-link:hover .navbar-icon {
+  opacity: 1;
+  transform: translateY(-1px) scale(1.08);
+}
+
+.navbar-link:hover::before {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  background: linear-gradient(
+    135deg,
+    rgba(210, 195, 246, 0.28),
+    rgba(242, 242, 242, 0.08) 48%,
+    rgba(28, 28, 40, 0.18)
+  );
+  border-color: rgba(210, 195, 246, 0.26);
+  box-shadow:
+    inset 0 1px 0 rgba(242, 242, 242, 0.34),
+    inset 0 -1px 0 rgba(28, 28, 40, 0.12),
+    0 4px 16px rgba(28, 28, 40, 0.12);
+}
+
+.navbar-link:hover::after {
+  opacity: 1;
+}
+
+.navbar-link.active {
+  color: #f2f2f2;
+}
+
+.navbar-link.active .navbar-icon {
+  opacity: 1;
+}
+
+.navbar-link.active::before {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  background: linear-gradient(
+    135deg,
+    rgba(210, 195, 246, 0.42),
+    rgba(242, 242, 242, 0.10) 45%,
+    rgba(28, 28, 40, 0.28)
+  );
+  border-color: rgba(210, 195, 246, 0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(242, 242, 242, 0.42),
+    inset 0 -1px 0 rgba(28, 28, 40, 0.20),
+    0 5px 20px rgba(28, 28, 40, 0.16);
+}
+
+.navbar-link.active::after {
+  opacity: 1;
+}
+
+.navbar-link:active {
+  transform: scale(0.94);
+}
+
+.navbar-link:focus-visible,
+.navbar-logo:focus-visible,
+.navbar-menu-button:focus-visible {
+  outline: 2px solid #d2c3f6;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   HAMBURGER
+   ========================================================= */
+
+.navbar-menu-button {
+  display: none;
+  position: relative;
+  z-index: 1202;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  flex: 0 0 44px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: 0;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.navbar-menu-button span {
+  width: 18px;
+  height: 1.5px;
+  display: block;
+  background: #f2f2f2;
+  border-radius: 999px;
+  transform-origin: center;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.2s ease;
+}
+
+.navbar-menu-button.open span:nth-child(1),
+.navbar.menu-open .navbar-menu-button span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.navbar-menu-button.open span:nth-child(2),
+.navbar.menu-open .navbar-menu-button span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-menu-button.open span:nth-child(3),
+.navbar.menu-open .navbar-menu-button span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+.navbar-mobile-menu {
+  display: none;
+}
+
+/* =========================================================
+   SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 1280px) {
+  .navbar {
+    max-width: calc(100% - 24px);
+  }
+
+  .navbar-link {
+    min-width: 78px;
+    width: 78px;
+    height: 58px;
+    min-height: 58px;
+    max-height: 58px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .navbar-link span {
+    font-size: 11px;
+  }
+
+  .navbar-link.is-about {
+    min-width: 88px;
+    width: 88px;
+    height: 58px;
+    min-height: 58px;
+    max-height: 58px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .navbar-link.is-about span {
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   TABLET — icon only so the pill never overflows
+   ========================================================= */
+
+@media (max-width: 1080px) {
+  .navbar {
+    max-width: calc(100% - 24px);
+    min-height: 64px;
+    gap: 2px;
+  }
+
+  .navbar-link,
+  .navbar-link.is-about {
+    min-width: 50px;
+    width: 50px;
+    min-height: 52px;
+    height: 52px;
+    max-height: 52px;
+    padding: 6px 4px;
+    gap: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .navbar-link span,
+  .navbar-link.is-about span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    font-size: 0;
+  }
+
+  .navbar-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .navbar-link.is-about .navbar-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .navbar {
+    width: calc(100% - 24px);
+    max-width: none;
+    min-height: 60px;
+    top: 12px;
+    margin: 0;
+    padding: 6px 8px;
+    justify-content: space-between;
+    border-radius: 22px;
+    overflow: visible;
+  }
+
+  .navbar-logo {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-menu-button {
+    display: flex;
+  }
+
+  .navbar-mobile-menu {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    width: 100%;
+    height: 100dvh;
+    max-width: 100vw;
+    pointer-events: none;
+  }
+
+  .navbar-mobile-backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: rgba(10, 10, 16, 0.42);
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.28s ease;
+  }
+
+  .navbar-mobile-sheet {
+    position: absolute;
+    top: calc(80px + env(safe-area-inset-top, 0px));
+    left: 50%;
+    width: calc(100% - 24px);
+    max-width: 430px;
+    max-height: calc(100dvh - 100px);
+    padding: 18px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(22, 22, 32, 0.78);
+    border: 1px solid rgba(242, 242, 242, 0.14);
+    border-radius: 28px;
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    box-shadow:
+      inset 0 1px 0 rgba(242, 242, 242, 0.16),
+      0 24px 60px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -14px) scale(0.98);
+    transform-origin: top center;
+    transition:
+      opacity 0.32s ease,
+      transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0.32s ease;
+  }
+
+  .navbar-mobile-menu.open {
+    pointer-events: auto;
+  }
+
+  .navbar-mobile-menu.open .navbar-mobile-backdrop {
+    opacity: 1;
+  }
+
+  .navbar-mobile-menu.open .navbar-mobile-sheet {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  .navbar-mobile-label {
+    margin: 0 10px 4px;
+    color: rgba(242, 242, 242, 0.46);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .navbar-mobile-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .navbar-mobile-link {
+    width: 100%;
+    min-height: 58px;
+    padding: 10px 12px 10px 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #f2f2f2;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 18px;
+    background: transparent;
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      background 0.25s ease,
+      border-color 0.25s ease,
+      opacity 0.35s ease,
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .navbar-mobile-menu.open .navbar-mobile-link {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(0.05s + (var(--i, 0) * 0.045s));
+  }
+
+  .navbar-mobile-icon {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(242, 242, 242, 0.06);
+    border: 1px solid rgba(242, 242, 242, 0.08);
+  }
+
+  .navbar-mobile-icon img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  .navbar-mobile-link.is-about .navbar-mobile-icon img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .navbar-mobile-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 16px;
+    font-weight: 550;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .navbar-mobile-arrow {
+    flex: 0 0 auto;
+    color: rgba(242, 242, 242, 0.28);
+    font-size: 16px;
+    line-height: 1;
+    transform: translateX(-2px);
+    transition:
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .navbar-mobile-link.active {
+    background: linear-gradient(
+      135deg,
+      rgba(210, 195, 246, 0.18),
+      rgba(242, 242, 242, 0.04)
+    );
+    border-color: rgba(210, 195, 246, 0.22);
+  }
+
+  .navbar-mobile-link.active .navbar-mobile-icon {
+    background: rgba(210, 195, 246, 0.16);
+    border-color: rgba(210, 195, 246, 0.24);
+  }
+
+  .navbar-mobile-link.active .navbar-mobile-arrow {
+    color: #d2c3f6;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .navbar-mobile-link:hover {
+      background: rgba(242, 242, 242, 0.06);
+    }
+
+    .navbar-mobile-link:hover .navbar-mobile-arrow {
+      color: #f2f2f2;
+      transform: translateX(2px);
+    }
+  }
+
+  .navbar-mobile-link:active {
+    transform: scale(0.985);
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .navbar {
+    width: calc(100% - 16px);
+    min-height: 56px;
+    top: 10px;
+  }
+
+  .navbar-logo {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .navbar-menu-button {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  .navbar-mobile-sheet {
+    top: calc(74px + env(safe-area-inset-top, 0px));
+    width: calc(100% - 16px);
+    padding: 16px 12px 12px;
+    border-radius: 24px;
+  }
+
+  .navbar-mobile-link {
+    min-height: 54px;
+    gap: 12px;
+  }
+
+  .navbar-mobile-icon {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+    border-radius: 12px;
+  }
+
+  .navbar-mobile-icon img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .navbar-mobile-link.is-about .navbar-mobile-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .navbar-mobile-text {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar {
+    width: calc(100% - 12px);
+  }
+
+  .navbar-mobile-sheet {
+    width: calc(100% - 12px);
+  }
+
+  .navbar-mobile-text {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   PREVENT HORIZONTAL SCROLL
+   ========================================================= */
+
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
