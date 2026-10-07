@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import "./Starlink.css";
+import "./starlink.css";
 import Button from "../components/Button";
 import heroBg from "../assets/starlink-hero.jpg"; // put your image path here
 
