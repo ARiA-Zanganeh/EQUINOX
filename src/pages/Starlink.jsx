@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import "./starlink.css";
 import Button from "../components/Button";
-import heroBg from "../assets/starlink-hero.jpg"; // put your image path here
+import heroBg from "../assets/Starlink-Hero.jpg";
 
 /* Figures: October 2026. Prices are US list prices and vary by country
    and address. Always confirm at starlink.com before publishing. */

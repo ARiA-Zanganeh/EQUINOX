@@ -9,7 +9,7 @@ import starlinkImg from "../assets/images/Starlink.jpg";
 import SpaceButton from "../components/SpaceButton";
 import Button from "../components/Button";
 
-import spaceIcon from "../assets/images/Space.png";
+import spaceIcon from "../assets/images/space.png";
 import rocketIcon from "../assets/images/Rocket.png";
 
 const BRIEFINGS = [
