@@ -11,7 +11,7 @@ const specs = [
   { label: "Type", value: "Space & Technology" },
   { label: "Creator", value: "EmpireX" },
   { label: "Design System", value: "NoX OS" },
-  { label: "Status", value: "Alpha 1.0" },
+  { label: "Status", value: "Stable" },
   { label: "Release", value: "2026" },
   { label: "Framework", value: "React + Vite" },
   { label: "Components", value: "React Components" },
