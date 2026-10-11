@@ -17,16 +17,10 @@ const Button = ({ children = 'Rockets', to = '/rockets', bg = '#000', ...props }
   );
 };
 
-// The "pressed" look: white fill, black text and dash, gaps in the border close.
-// Used for :active (touch + mouse click) and for :hover on devices that have hover.
+// "Pressed" look: white fill, black text, gaps in the border close.
 const pressed = css`
   color: #000;
   background: #fff;
-
-  &::before {
-    width: 0.9375rem;
-    background: #000;
-  }
 
   .text {
     color: #000;
@@ -51,10 +45,14 @@ const StyledWrapper = styled.div`
 
   .fancy {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     margin: 0;
-    padding: 1.25em 2em;
+    min-width: 196px;
+    height: 52px;
+    padding: 0 1.6em;
     border: 2px solid #fff;
     border-radius: 0;
     background: transparent;
@@ -70,20 +68,8 @@ const StyledWrapper = styled.div`
     overflow: visible;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    transition: all 0.3s ease-in-out;
-
-    /* dash on the left */
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 1.5em;
-      width: 1.5625rem;
-      height: 2px;
-      background: #fff;
-      transform: translateY(-50%);
-      transition: background 0.3s linear, width 0.3s linear;
-    }
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out,
+      transform 0.15s ease;
 
     .text {
       display: block;

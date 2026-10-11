@@ -451,3 +451,119 @@
     transition: none;
   }
 }
+
+/* =========================================================
+   FIX: Mission page button hover (matches other pages)
+   ========================================================= */
+.mission-end .fancy {
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.15s ease !important;
+}
+
+.mission-end .fancy .text,
+.mission-end .fancy .top-key,
+.mission-end .fancy .bottom-key-1,
+.mission-end .fancy .bottom-key-2 {
+  transition: all 0.35s ease-out !important;
+}
+
+.mission-end .fancy:hover {
+  color: #000;
+  background: #fff;
+}
+
+.mission-end .fancy:hover .text {
+  color: #000;
+  padding-left: 1.5em;
+}
+
+.mission-end .fancy:hover .top-key {
+  left: -2px;
+  width: 0;
+}
+
+.mission-end .fancy:hover .bottom-key-1,
+.mission-end .fancy:hover .bottom-key-2 {
+  right: 0;
+  width: 0;
+}
+
+/* Optional: small press feedback (same as :active in the component) */
+.mission-end .fancy:active {
+  transform: scale(0.97);
+}
+
+/* =========================================================
+   FORCE FIX: Missions page buttons only
+   ========================================================= */
+.mission-end .fancy {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 196px !important;
+  height: 52px !important;
+  padding: 0 1.6em !important;
+  border: 2px solid #fff !important;
+  background: transparent !important;
+  color: #fff !important;
+  overflow: visible !important;
+  transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease !important;
+}
+
+.mission-end .fancy .text {
+  color: #fff !important;
+  padding-left: 2em !important;
+  transition: color 0.35s ease, padding-left 0.35s ease !important;
+}
+
+.mission-end .fancy .top-key,
+.mission-end .fancy .bottom-key-1,
+.mission-end .fancy .bottom-key-2 {
+  background: #000 !important;
+  transition: width 0.4s ease-out, left 0.35s ease-out, right 0.35s ease-out !important;
+}
+
+/* Correct gap positions (normal state) */
+.mission-end .fancy .top-key {
+  top: -2px !important;
+  left: 0.625rem !important;
+  width: 1.5625rem !important;
+}
+
+.mission-end .fancy .bottom-key-1 {
+  bottom: -2px !important;
+  right: 1.875rem !important;
+  width: 1.5625rem !important;
+}
+
+.mission-end .fancy .bottom-key-2 {
+  bottom: -2px !important;
+  right: 0.625rem !important;
+  width: 0.625rem !important;
+}
+
+/* Hover state — same as other pages */
+.mission-end .fancy:hover {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+.mission-end .fancy:hover .text {
+  color: #000 !important;
+  padding-left: 1.5em !important;
+}
+
+.mission-end .fancy:hover .top-key {
+  left: -2px !important;
+  width: 0 !important;
+}
+
+.mission-end .fancy:hover .bottom-key-1,
+.mission-end .fancy:hover .bottom-key-2 {
+  right: 0 !important;
+  width: 0 !important;
+}
+
+.mission-end .fancy:active {
+  transform: scale(0.97);
+}

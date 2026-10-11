@@ -1,35 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./Home.css";
 
 import homeImg from "../assets/images/Homeimg.jpg";
 import exploreImg from "../assets/images/explore-earth.jpg";
 import starlinkImg from "../assets/images/Starlink.jpg";
+import section2Vid from "../assets/videos/Section2-vid.mp4";
 
 import SpaceButton from "../components/SpaceButton";
 import Button from "../components/Button";
 
 import spaceIcon from "../assets/images/space.png";
 import rocketIcon from "../assets/images/Rocket.png";
-
-const BRIEFINGS = [
-  {
-    label: "ORBIT BRIEF",
-    text: "Space is no longer a distant backdrop. It is a system we are learning to reach, read, and inhabit.",
-  },
-  {
-    label: "NEXT WINDOW",
-    text: "Rockets rise. Satellites listen. Every launch is a sentence in a story still being written above Earth.",
-  },
-  {
-    label: "SIGNAL LOCK",
-    text: "From the pad to deep space, the machines we send outward are how humanity stays connected beyond the sky.",
-  },
-  {
-    label: "LOOK UP",
-    text: "EQUINOX is a map of what comes next — the vehicles, the missions, and the worlds just past familiar orbit.",
-  },
-];
 
 function Home() {
   const introRef = useRef(null);
@@ -42,9 +24,6 @@ function Home() {
   const exploreContentRef = useRef(null);
   const starlinkRef = useRef(null);
   const starlinkContentRef = useRef(null);
-
-  const [active, setActive] = useState(0);
-  const [leaving, setLeaving] = useState(false);
 
   useEffect(() => {
     const intro = introRef.current;
@@ -133,44 +112,21 @@ function Home() {
       scale = lerp(scale, scaleTarget, 0.07);
 
       black.style.opacity = String(overlay);
-
       content.style.opacity = String(contentOp);
-
-      content.style.transform = `translate3d(
-        0,
-        ${(1 - contentOp) * -32}px,
-        0
-      )`;
-
-      content.style.pointerEvents =
-        contentOp < 0.2 ? "none" : "auto";
+      content.style.transform = `translate3d(0, ${(1 - contentOp) * -32}px, 0)`;
+      content.style.pointerEvents = contentOp < 0.2 ? "none" : "auto";
 
       aboutInner.style.opacity = String(aboutOp);
-
-      aboutInner.style.transform = `translate3d(
-        0,
-        ${(1 - aboutOp) * 36}px,
-        0
-      )`;
+      aboutInner.style.transform = `translate3d(0, ${(1 - aboutOp) * 36}px, 0)`;
 
       if (exploreContent) {
         exploreContent.style.opacity = String(exploreOp);
-
-        exploreContent.style.transform = `translate3d(
-          -50%,
-          ${(1 - exploreOp) * 42}px,
-          0
-        )`;
+        exploreContent.style.transform = `translate3d(-50%, ${(1 - exploreOp) * 42}px, 0)`;
       }
 
       if (starlinkContent) {
         starlinkContent.style.opacity = String(starlinkOp);
-
-        starlinkContent.style.transform = `translate3d(
-          0,
-          ${(1 - starlinkOp) * 28}px,
-          0
-        )`;
+        starlinkContent.style.transform = `translate3d(0, ${(1 - starlinkOp) * 28}px, 0)`;
       }
 
       heroImage.style.transform = `scale(${scale})`;
@@ -186,28 +142,10 @@ function Home() {
     };
   }, []);
 
-  const advanceBriefing = () => {
-    if (leaving) return;
-
-    setLeaving(true);
-
-    window.setTimeout(() => {
-      setActive((current) => (current + 1) % BRIEFINGS.length);
-      setLeaving(false);
-    }, 320);
-  };
-
-  const slide = BRIEFINGS[active];
-
   return (
     <main className="home">
-      {/* =====================================================
-          HERO
-      ====================================================== */}
-
       <section className="home-intro" ref={introRef}>
         <div className="home-hero">
-
           <img
             ref={heroImageRef}
             className="home-hero-img"
@@ -217,16 +155,9 @@ function Home() {
           />
 
           <div className="home-hero-dim"></div>
+          <div className="home-hero-black" ref={blackRef}></div>
 
-          <div
-            className="home-hero-black"
-            ref={blackRef}
-          ></div>
-
-          <div
-            className="home-hero-content"
-            ref={contentRef}
-          >
+          <div className="home-hero-content" ref={contentRef}>
             <h1>WHAT'S NEXT.</h1>
 
             <p className="home-lead">
@@ -250,33 +181,32 @@ function Home() {
 
             <div className="home-actions">
               <NavLink to="/Space">
-                <SpaceButton icon={spaceIcon}>
-                  Space
-                </SpaceButton>
+                <SpaceButton icon={spaceIcon}>Space</SpaceButton>
               </NavLink>
 
               <NavLink to="/Rockets">
-                <SpaceButton icon={rocketIcon}>
-                  Rockets
-                </SpaceButton>
+                <SpaceButton icon={rocketIcon}>Rockets</SpaceButton>
               </NavLink>
             </div>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          ABOUT / MANIFESTO
-      ====================================================== */}
+      <section className="home-about" ref={aboutRef}>
+        <video
+          className="home-about-video"
+          src={section2Vid}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
 
-      <section
-        className="home-about"
-        ref={aboutRef}
-      >
-        <div
-          className="home-about-inner"
-          ref={aboutInnerRef}
-        >
+        <div className="home-about-dim"></div>
+
+        <div className="home-about-inner" ref={aboutInnerRef}>
           <h1>
             SPACE IS MORE THAN A DISTANT WORLD — IT IS A PLACE
             WE SEEK TO UNDERSTAND.
@@ -288,68 +218,10 @@ function Home() {
             and spacecraft to the systems connecting humanity
             beyond Earth.
           </p>
-
-          <div className="eq-deck-wrap">
-            <button
-              type="button"
-              className="eq-widget"
-              onClick={advanceBriefing}
-              aria-label={`${slide.label}. ${slide.text} Click to see the next briefing.`}
-            >
-              <div className="eq-widget-glow"></div>
-
-              <div className="eq-time">
-                EQUINOX
-              </div>
-
-              <div className="eq-note-stage">
-                <div
-                  key={`${active}-${leaving ? "out" : "in"}`}
-                  className={`eq-note ${
-                    leaving ? "is-out" : "is-in"
-                  }`}
-                >
-                  <span className="eq-note-label">
-                    <span
-                      className="eq-note-sun"
-                      aria-hidden="true"
-                    >
-                      ✦
-                    </span>
-
-                    {slide.label}
-                  </span>
-
-                  <p>{slide.text}</p>
-                </div>
-              </div>
-            </button>
-
-            <div
-              className="eq-dots"
-              aria-hidden="true"
-            >
-              {BRIEFINGS.map((item, index) => (
-                <span
-                  key={item.label}
-                  className={
-                    index === active ? "is-on" : ""
-                  }
-                />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* =====================================================
-          BUILT TO EXPLORE
-      ====================================================== */}
-
-      <section
-        className="home-explore"
-        ref={exploreRef}
-      >
+      <section className="home-explore" ref={exploreRef}>
         <div className="home-explore-sticky">
           <div className="home-explore-image-wrap">
             <img
@@ -358,14 +230,10 @@ function Home() {
               alt=""
               aria-hidden="true"
             />
-
             <div className="home-explore-fade"></div>
           </div>
 
-          <div
-            className="home-explore-content"
-            ref={exploreContentRef}
-          >
+          <div className="home-explore-content" ref={exploreContentRef}>
             <h1>BUILT TO EXPLORE.</h1>
 
             <p>
@@ -374,34 +242,17 @@ function Home() {
             </p>
 
             <div className="home-explore-actions">
-              <Button to="/Missions">
-                Missions
-              </Button>
-
-              <Button to="/Technology">
-                Technology
-              </Button>
+              <Button to="/Missions">Missions</Button>
+              <Button to="/Technology">Technology</Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          STARLINK
-      ====================================================== */}
-
-      <section
-        className="home-starlink"
-        ref={starlinkRef}
-      >
-        <div
-          className="home-starlink-inner"
-          ref={starlinkContentRef}
-        >
+      <section className="home-starlink" ref={starlinkRef}>
+        <div className="home-starlink-inner" ref={starlinkContentRef}>
           <div className="home-starlink-copy">
-            <h1>
-              FREEDOM, WITHOUT BORDERS.
-            </h1>
+            <h1>FREEDOM, WITHOUT BORDERS.</h1>
 
             <p>
               Starlink is changing the way we connect with the
@@ -412,9 +263,7 @@ function Home() {
             </p>
 
             <div className="home-starlink-actions">
-              <Button to="/Starlink">
-                Starlink
-              </Button>
+              <Button to="/Starlink">Starlink</Button>
             </div>
           </div>
 
@@ -425,7 +274,6 @@ function Home() {
               alt=""
               aria-hidden="true"
             />
-
             <div className="home-starlink-fade"></div>
           </div>
         </div>

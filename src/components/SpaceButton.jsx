@@ -24,19 +24,22 @@ const SpaceButton = ({ icon, children }) => {
 
 const StyledWrapper = styled.div`
   button {
-    font-family: inherit;
-    font-size: 20px;
-    background: #212121;
-    color: white;
-    padding: 0.7em 1em;
-    padding-left: 0.9em;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    border: none;
-    border-radius: 15px;
-    font-weight: 1000;
-  }
+  font-family: inherit;
+  font-size: 16px;
+  background: #212121;
+  color: white;
+  box-sizing: border-box;
+  min-width: 168px;
+  height: 52px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+}
 
   button span {
     display: block;

@@ -4,9 +4,10 @@ import Button from "../components/Button";
 import heroBg from "../assets/Starlink-Hero.jpg";
 
 /* Figures: October 2026. Prices are US list prices and vary by country
-   and address. Always confirm at starlink.com before publishing. */
+   and address. Always confirm at starlink.com before publishing.
+   SECTIONS is exported so the site search can read it. */
 
-const SECTIONS = [
+export const SECTIONS = [
   {
     id: "overview",
     kicker: "Overview",

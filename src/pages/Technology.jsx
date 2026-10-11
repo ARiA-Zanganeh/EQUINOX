@@ -5,9 +5,10 @@ import heroBg from "../assets/technology-hero.jpg";
 import grokBg from "../assets/technology-grok.jpg";
 
 /* Figures are order-of-magnitude engineering facts, not a live catalog.
-   Engine names and orbit bands are the public ones used on current vehicles. */
+   Engine names and orbit bands are the public ones used on current vehicles.
+   SECTIONS is exported so the site search can read it. */
 
-const SECTIONS = [
+export const SECTIONS = [
   {
     id: "overview",
     kicker: "Overview",

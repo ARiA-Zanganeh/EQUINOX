@@ -39,8 +39,9 @@ function useReveal() {
 /* ---------------------------------------------------------
    Content
    `to` = the page each category opens. Add these 5 routes in App.jsx.
+   Exported so the site search can read it.
    --------------------------------------------------------- */
-const SECTIONS = [
+export const SECTIONS = [
   {
     id: "human-exploration",
     to: "/missions/human-exploration",

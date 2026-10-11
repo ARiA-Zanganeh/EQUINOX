@@ -1,0 +1,316 @@
+/* =========================================================
+   EQUINOX — NAVBAR SHELL + SEARCH BUTTON
+   Works with this structure:
+
+   <header.navbar-shell>
+     <nav.navbar>
+       logo · title · links · <div.navbar-right>search + hamburger</div>
+     </nav>
+   </header>
+
+   Desktop / tablet:  [ logo | links | (search) ]
+   Mobile:            (logo)     [ TITLE ]     (search) (hamburger)
+   ========================================================= */
+
+.navbar-shell,
+.navbar-shell *,
+.navbar-search,
+.navbar-search * {
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+   SHELL — centers the pill on desktop
+   --------------------------------------------------------- */
+
+.navbar-shell {
+  --search-size: 52px;
+
+  position: fixed;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1200;
+
+  width: max-content;
+  max-width: calc(100% - 24px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The pill is positioned by the shell, not by itself */
+.navbar-shell .navbar {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+
+  flex: 0 0 auto;
+  max-width: none;
+}
+
+/* Search + hamburger group */
+.navbar-shell .navbar-right {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  flex: 0 0 auto;
+  margin-left: 6px;
+}
+
+/* ---------------------------------------------------------
+   SEARCH BUTTON — glass circle
+   --------------------------------------------------------- */
+
+.navbar-shell .navbar-search {
+  position: relative;
+
+  width: var(--search-size);
+  height: var(--search-size);
+  flex: 0 0 var(--search-size);
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--nav-text);
+  background: rgba(242, 242, 242, 0.06);
+
+  border: 1px solid rgba(242, 242, 242, 0.14);
+  border-radius: 50%;
+
+  box-shadow:
+    inset 0 1px 0 rgba(242, 242, 242, 0.2),
+    inset 0 -1px 0 rgba(28, 28, 40, 0.18);
+
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    transform 0.38s var(--nav-ease),
+    border-color 0.38s ease;
+}
+
+/* Soft lavender wash on hover, same tone as the active nav link */
+.navbar-shell .navbar-search::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    rgba(210, 195, 246, 0.3),
+    rgba(242, 242, 242, 0.08) 50%,
+    rgba(28, 28, 40, 0.14)
+  );
+  border: 1px solid rgba(210, 195, 246, 0.3);
+
+  opacity: 0;
+  transform: scale(0.72);
+
+  transition:
+    opacity 0.42s var(--nav-ease),
+    transform 0.48s var(--nav-ease);
+}
+
+.navbar-shell .navbar-search svg {
+  position: relative;
+  z-index: 1;
+
+  width: 20px;
+  height: 20px;
+
+  opacity: 0.88;
+
+  transition:
+    transform 0.38s var(--nav-ease),
+    opacity 0.38s ease;
+}
+
+@media (hover: hover) {
+  .navbar-shell .navbar-search:hover {
+    transform: scale(1.05);
+  }
+
+  .navbar-shell .navbar-search:hover::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .navbar-shell .navbar-search:hover svg {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.navbar-shell .navbar-search:active {
+  transform: scale(0.92);
+}
+
+.navbar-shell .navbar-search:focus-visible {
+  outline: 2px solid var(--nav-accent);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   TABLET — matches the shorter pill
+   --------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .navbar-shell {
+    --search-size: 46px;
+  }
+
+  .navbar-shell .navbar-search svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+   (logo)      [ PAGE TITLE ]      (search) (hamburger)
+
+   The shell becomes a full-width strip. The .navbar fills it
+   (App.css already makes it transparent): logo on the left,
+   title absolutely centered, .navbar-right on the right.
+   --------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .navbar-shell {
+    --search-size: var(--nav-m-size);
+    --m-gap: 8px;
+
+    top: calc(12px + env(safe-area-inset-top, 0px));
+    left: 12px;
+    right: 12px;
+
+    width: auto;
+    max-width: none;
+    height: var(--nav-m-size);
+    transform: none;
+
+    display: block;
+
+    /* the empty gaps must not block clicks on the page */
+    pointer-events: none;
+  }
+
+  .navbar-shell .navbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    min-height: 0;
+    transform: none;
+
+    justify-content: space-between;
+    pointer-events: none;
+  }
+
+  .navbar-shell .navbar-logo,
+  .navbar-shell .navbar-right {
+    pointer-events: auto;
+  }
+
+  /* Right group: search + hamburger side by side */
+  .navbar-shell .navbar-right {
+    margin-left: 0;
+    gap: var(--m-gap);
+  }
+
+  /* Search: same glass island style as the logo and hamburger */
+  .navbar-shell .navbar-search {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(242, 242, 242, 0.12),
+        rgba(242, 242, 242, 0.02) 55%
+      ),
+      var(--nav-glass-bg-mobile);
+
+    border-color: var(--nav-glass-border);
+
+    backdrop-filter: var(--nav-glass-blur);
+    -webkit-backdrop-filter: var(--nav-glass-blur);
+
+    box-shadow: var(--nav-glass-shadow);
+  }
+
+  .navbar-shell .navbar-search svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  /* Title: compact pill, centered on the screen */
+  .navbar-shell .navbar-title {
+    height: 42px;
+    padding: 0 16px;
+
+    /* never run under the logo or the search + hamburger pair */
+    max-width: calc(
+      100% - 2 * (var(--nav-m-size) * 2 + var(--m-gap) * 2)
+    );
+
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+  }
+
+  .navbar-shell .navbar-title-text {
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-shell {
+    --m-gap: 6px;
+
+    top: calc(10px + env(safe-area-inset-top, 0px));
+    left: 8px;
+    right: 8px;
+  }
+
+  .navbar-shell .navbar-title {
+    height: 40px;
+    padding: 0 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar-shell {
+    --m-gap: 5px;
+
+    left: 6px;
+    right: 6px;
+  }
+
+  .navbar-shell .navbar-title {
+    height: 38px;
+    padding: 0 10px;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-shell .navbar-search,
+  .navbar-shell .navbar-search::before,
+  .navbar-shell .navbar-search svg {
+    transition-duration: 0.01ms !important;
+  }
+}
