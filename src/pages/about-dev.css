@@ -277,9 +277,9 @@
   text-align: center;
 }
 
-/* ---------- EmpireX identity mark ---------- */
+/* ---------- AxorynthX identity mark ---------- */
 
-.empirex-lockup {
+.axorynthx-lockup {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -287,7 +287,7 @@
   margin: 0 auto 30px;
 }
 
-.empirex-avatar {
+.axorynthx-avatar {
   width: 104px;
   height: 104px;
   padding: 3px;
@@ -299,7 +299,7 @@
     0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
-.empirex-avatar img {
+.axorynthx-avatar img {
   width: 100%;
   height: 100%;
   display: block;
@@ -309,7 +309,7 @@
   background: #111118;
 }
 
-.empirex-word {
+.axorynthx-word {
   color: #8d8d8d;
   font-size: 11px;
   font-weight: 500;
@@ -743,7 +743,7 @@
     border-radius: 30px;
   }
 
-  .empirex-avatar {
+  .axorynthx-avatar {
     width: 96px;
     height: 96px;
   }
@@ -819,12 +819,12 @@
     padding: 40px 20px 32px;
   }
 
-  .empirex-avatar {
+  .axorynthx-avatar {
     width: 88px;
     height: 88px;
   }
 
-  .empirex-lockup {
+  .axorynthx-lockup {
     margin-bottom: 24px;
   }
 

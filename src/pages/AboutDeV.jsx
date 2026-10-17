@@ -9,7 +9,7 @@ import "./about-dev.css";
 const specs = [
   { label: "Project", value: "EQUINOX" },
   { label: "Type", value: "Space & Technology" },
-  { label: "Creator", value: "EmpireX" },
+  { label: "Creator", value: "AxorynthX" },
   { label: "Design System", value: "NoX OS" },
   { label: "Status", value: "Stable" },
   { label: "Release", value: "2026" },
@@ -31,19 +31,18 @@ const developer = [
     label: "Focus",
     value: "Web Development · Interactive Experiences · AI-Assisted Development",
   },
-  { label: "Project", value: "EQUINOX · EmpireX" },
+  { label: "Project", value: "EQUINOX · AxorynthX" },
   {
     label: "Skills",
     value: "HTML · CSS · JavaScript · React · Git · Claude Code · Cursor · UI Design",
   },
 ];
 
-/* Links provided by the project owner.
-   Anything still unknown should stay "#" and be replaced later. */
+/* Social links */
 const links = [
   {
     name: "YouTube",
-    handle: "@ToEmpireX",
+    handle: "@AxorynthX",
     href: "https://www.youtube.com/channel/UCvX_6fJHBT3zF1SHFbnFjtw",
     icon: (
       <>
@@ -54,8 +53,8 @@ const links = [
   },
   {
     name: "Instagram",
-    handle: "@toempirex",
-    href: "https://www.instagram.com/toempirex",
+    handle: "@AxorynthX",
+    href: "https://www.instagram.com/AxorynthX",
     icon: (
       <>
         <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -66,8 +65,8 @@ const links = [
   },
   {
     name: "Telegram",
-    handle: "@toempirex",
-    href: "https://t.me/toempirex",
+    handle: "@AxorynthX",
+    href: "https://t.me/AxorynthX",
     icon: (
       <>
         <path d="M21 4 3 10.8l6 2.4L21 4Z" />
@@ -89,8 +88,7 @@ const links = [
 ];
 
 /* ---------------------------------------------------------
-   REVEAL — same pattern as Rockets (IntersectionObserver,
-   reduced-motion aware). Children use .rv with --d delay.
+   REVEAL — IntersectionObserver, reduced-motion aware
    --------------------------------------------------------- */
 
 function useReveal(threshold = 0.22) {
@@ -139,7 +137,7 @@ function AboutDeV() {
   const connectRef = useReveal(0.4);
   const finalRef = useReveal(0.4);
 
-  /* Soft pointer light — unchanged behavior, desktop pointers only */
+  /* Soft pointer light — desktop pointers only */
   useEffect(() => {
     const page = pageRef.current;
     const panel = panelRef.current;
@@ -147,6 +145,7 @@ function AboutDeV() {
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)");
+
     if (reduced.matches || !fine.matches) return undefined;
 
     let frame = 0;
@@ -180,8 +179,10 @@ function AboutDeV() {
 
     const onMove = (event) => {
       const bounds = panel.getBoundingClientRect();
+
       targetX = event.clientX - bounds.left;
       targetY = event.clientY - bounds.top;
+
       const pageBounds = page.getBoundingClientRect();
       targetPageX = event.clientX - pageBounds.left;
       targetPageY = event.clientY - pageBounds.top;
@@ -192,6 +193,7 @@ function AboutDeV() {
         currentY = targetY;
         pageX = targetPageX;
         pageY = targetPageY;
+
         page.classList.add("is-lit");
         frame = window.requestAnimationFrame(tick);
       }
@@ -215,7 +217,7 @@ function AboutDeV() {
 
   return (
     <main className="about-page" ref={pageRef}>
-      {/* One atmosphere for the whole page: stars + haze never stop */}
+      {/* Atmospheric background */}
       <div className="about-atmosphere" aria-hidden="true">
         <span className="about-stars about-stars-far" />
         <span className="about-stars about-stars-mid" />
@@ -235,11 +237,11 @@ function AboutDeV() {
           <div className="about-glass-light" aria-hidden="true" />
 
           <div className="about-inner">
-            <div className="empirex-lockup rv" style={d(0.05)}>
-              <div className="empirex-avatar">
-                <img src="/EmpireX.jpg" alt="EmpireX" />
+            <div className="axorynthx-lockup rv" style={d(0.05)}>
+              <div className="axorynthx-avatar">
+                <img src="/AxorynthX.jpg" alt="AxorynthX" />
               </div>
-              <span className="empirex-word">EmpireX</span>
+              <span className="axorynthx-word">AxorynthX</span>
             </div>
 
             <h1 id="equinox-title" className="about-title rv" style={d(0.16)}>
@@ -259,7 +261,7 @@ function AboutDeV() {
             </div>
 
             <p className="about-signature rv" style={d(0.38)}>
-              Built by EmpireX.
+              Built by AxorynthX.
             </p>
 
             <dl className="about-meta rv" style={d(0.5)}>
@@ -292,7 +294,7 @@ function AboutDeV() {
         </div>
       </section>
 
-      {/* Atmosphere carries on; this only adds breathing room */}
+      {/* Atmospheric bridge */}
       <div className="about-bridge" aria-hidden="true" />
 
       {/* ============ 02 — DEVELOPER ============ */}
@@ -304,7 +306,6 @@ function AboutDeV() {
         <div className="about-dev-inner">
           <div className="about-dev-media rv" style={d(0.05)}>
             <div className="dev-avatar">
-              {/* Replace /developer-profile.jpg with your own photo */}
               <img src="/developer-profile.jpg" alt="Aria Zanganeh" />
             </div>
           </div>
@@ -313,12 +314,19 @@ function AboutDeV() {
             <p className="about-index rv" style={d(0.1)}>
               02 — The developer
             </p>
-            <h2 id="developer-title" className="about-dev-name rv" style={d(0.18)}>
+
+            <h2
+              id="developer-title"
+              className="about-dev-name rv"
+              style={d(0.18)}
+            >
               ARiA ZANGANEH
             </h2>
+
             <p className="about-dev-aka rv" style={d(0.26)}>
               Also known as ARi SOUL
             </p>
+
             <p className="about-dev-intro rv" style={d(0.36)}>
               I build things for the web and like understanding how they work.
               EQUINOX started as a way to bring technology and design together,
@@ -347,6 +355,7 @@ function AboutDeV() {
         <p className="about-index rv" style={d(0.05)}>
           03 — Content
         </p>
+
         <h2 id="connect-title" className="about-connect-title rv" style={d(0.12)}>
           Follow the project
         </h2>
@@ -372,6 +381,7 @@ function AboutDeV() {
                 >
                   {link.icon}
                 </svg>
+
                 <span className="about-link-text">
                   <span className="about-link-name">{link.name}</span>
                   <span className="about-link-handle">{link.handle}</span>
@@ -387,13 +397,15 @@ function AboutDeV() {
         <h2 className="about-final-title rv" style={d(0.05)}>
           Built to explore what comes next.
         </h2>
+
         <p className="about-final-text rv" style={d(0.18)}>
           EQUINOX is only the beginning. The project will keep evolving through
           new ideas, technologies, and experiences.
         </p>
+
         <div className="about-final-sign rv" style={d(0.32)}>
           <span className="about-final-mark">EQUINOX</span>
-          <span className="about-final-sub">EmpireX · 2026</span>
+          <span className="about-final-sub">AxorynthX · 2026</span>
         </div>
       </section>
     </main>
